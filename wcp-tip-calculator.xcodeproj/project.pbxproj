@@ -17,6 +17,9 @@
 		6309345C2723061F005368D0 /* TipInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6309345B2723061F005368D0 /* TipInfo.swift */; };
 		6358879F2734C531003A79EB /* DisplayTips.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6358879E2734C531003A79EB /* DisplayTips.swift */; };
 		6374358827342B35007C827B /* ServerInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6374358727342B35007C827B /* ServerInfo.swift */; };
+		63C519012767ABB900076E51 /* SMG-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 63C518FF2767ABB900076E51 /* SMG-Regular.ttf */; };
+		63C519022767ABB900076E51 /* SMG-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 63C519002767ABB900076E51 /* SMG-Italic.ttf */; };
+		63C76D6C2763F52200AB5913 /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C76D6B2763F52200AB5913 /* Test.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +53,10 @@
 		6309345B2723061F005368D0 /* TipInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipInfo.swift; sourceTree = "<group>"; };
 		6358879E2734C531003A79EB /* DisplayTips.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayTips.swift; sourceTree = "<group>"; };
 		6374358727342B35007C827B /* ServerInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerInfo.swift; sourceTree = "<group>"; };
+		63C518FF2767ABB900076E51 /* SMG-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SMG-Regular.ttf"; sourceTree = "<group>"; };
+		63C519002767ABB900076E51 /* SMG-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SMG-Italic.ttf"; sourceTree = "<group>"; };
+		63C519032767AC0400076E51 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		63C76D6B2763F52200AB5913 /* Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +87,8 @@
 		630934232722EFB8005368D0 = {
 			isa = PBXGroup;
 			children = (
+				63C519002767ABB900076E51 /* SMG-Italic.ttf */,
+				63C518FF2767ABB900076E51 /* SMG-Regular.ttf */,
 				6309342E2722EFB8005368D0 /* wcp-tip-calculator */,
 				6309343F2722EFBA005368D0 /* wcp-tip-calculatorTests */,
 				630934492722EFBA005368D0 /* wcp-tip-calculatorUITests */,
@@ -100,11 +109,13 @@
 		6309342E2722EFB8005368D0 /* wcp-tip-calculator */ = {
 			isa = PBXGroup;
 			children = (
+				63C519032767AC0400076E51 /* Info.plist */,
 				6309342F2722EFB8005368D0 /* wcp_tip_calculatorApp.swift */,
 				630934312722EFB8005368D0 /* ContentView.swift */,
 				6309345B2723061F005368D0 /* TipInfo.swift */,
 				6374358727342B35007C827B /* ServerInfo.swift */,
 				6358879E2734C531003A79EB /* DisplayTips.swift */,
+				63C76D6B2763F52200AB5913 /* Test.swift */,
 				630934332722EFBA005368D0 /* Assets.xcassets */,
 				630934352722EFBA005368D0 /* Preview Content */,
 			);
@@ -240,6 +251,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				63C519012767ABB900076E51 /* SMG-Regular.ttf in Resources */,
+				63C519022767ABB900076E51 /* SMG-Italic.ttf in Resources */,
 				630934372722EFBA005368D0 /* Preview Assets.xcassets in Resources */,
 				630934342722EFBA005368D0 /* Assets.xcassets in Resources */,
 			);
@@ -271,6 +284,7 @@
 				6374358827342B35007C827B /* ServerInfo.swift in Sources */,
 				6358879F2734C531003A79EB /* DisplayTips.swift in Sources */,
 				630934302722EFB8005368D0 /* wcp_tip_calculatorApp.swift in Sources */,
+				63C76D6C2763F52200AB5913 /* Test.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -434,9 +448,11 @@
 				DEVELOPMENT_TEAM = 2R4Z5H5UG9;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "wcp-tip-calculator/Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -446,7 +462,7 @@
 				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "emomchilov.wcp-tip-calculator";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "wcp-tip-calculator";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -464,9 +480,11 @@
 				DEVELOPMENT_TEAM = 2R4Z5H5UG9;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "wcp-tip-calculator/Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -476,7 +494,7 @@
 				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "emomchilov.wcp-tip-calculator";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "wcp-tip-calculator";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

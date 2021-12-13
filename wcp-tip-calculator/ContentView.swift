@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+@available(iOS 15.0, *)
 struct ContentView: View {
     
     
@@ -29,16 +30,18 @@ struct ContentView: View {
                         .padding()
                         .shadow(color: Color.black, radius: 25)
                     NavigationLink(destination: TipInfoView(), label:
-                                    { Text("Enter here")})
+                                    { Text("START")
+                            .font(Font.custom("SMG-Regular", size: 20))
+                            .bold()
+                    })
                         .padding()
-                        .background(Color.blue)
-                        .foregroundColor(Color.white)
+                        .background(Color("WCPLightBlue"))
+                        .foregroundColor(Color("WCPBlue"))
                         .frame(alignment: .bottom)
                         .cornerRadius(25)
                         .shadow(color: Color.black, radius: 25)
                 }
             }
-            .frame(width: .infinity, height: .infinity, alignment: .top)
         }
     }
     

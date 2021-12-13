@@ -38,10 +38,8 @@ class TipManager {
         
         // calculates the total amount that goes to support staff
         sTips = (totalNetSales * (0.015 * Float(numSupport))) / Float(numSupport)
-        print("Total Net Sales: \(totalNetSales)")
-        print("Support Tips: \(sTips)")
         // calculates the tips per server
-        perServer = (totalTips - sTips) / Float(serverArray.count)
+        perServer = (totalTips - (sTips * Float(numSupport))) / Float(serverArray.count)
         return (totalNetSales, perServer, sTips)
     }
 }
@@ -56,14 +54,23 @@ struct DisplayTips: View {
         let dataCollecter = TipManager.totalTips(serverArray: serv, numSupport: numSup)
         VStack {
             Text("Each server walks with:")
+                .bold()
                 .padding()
-                .font(.title3)
+                .font(.title2)
             Text(dataCollecter.tips.asCurrency())
-            Text("Each support walks with:")
-                .padding()
                 .font(.title3)
+            Text("Each support walks with:")
+                .bold()
+                .padding()
+                .font(.title2)
             Text(dataCollecter.supportTips.asCurrency())
+                .font(.title3)
         }
+        .background(Image("diamond-upholstery")
+                        .resizable()
+                        .frame(width: 500, height: 300, alignment: .center)
+                        .aspectRatio(contentMode: .fill))
+        .ignoresSafeArea()
     }
 }
 
