@@ -13,6 +13,7 @@ struct wcp_tip_calculatorApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+            
         }
     }
 }

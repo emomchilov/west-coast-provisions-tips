@@ -31,15 +31,15 @@ struct ContentView: View {
                         .shadow(color: Color.black, radius: 25)
                     NavigationLink(destination: TipInfoView(), label:
                                     { Text("START")
-                            .font(Font.custom("SMG-Regular", size: 20))
+                            .font(Font.custom("SMG-Regular", size: 15))
                             .bold()
                     })
-                        .padding()
+                        .padding(20)
                         .background(Color("WCPLightBlue"))
                         .foregroundColor(Color("WCPBlue"))
                         .frame(alignment: .bottom)
                         .cornerRadius(25)
-                        .shadow(color: Color.black, radius: 25)
+                        .shadow(color: Color.black, radius: 15)
                 }
             }
         }

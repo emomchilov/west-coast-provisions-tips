@@ -47,25 +47,27 @@ struct ServerInfoView: View {
         NavigationView {
             VStack(spacing: 70) {
                 Form {
-                    TextField("Scan Text", text: $textReader)
-                    ScanButton(text: $textReader)
                     Section {
                         TextField("Name", text: $name)
+                        ScanButton(text: $name)
                     }
                     Section(footer: Text("Net Sales in the form of $X,XXX.XX")) {
                         TextField("Net Sales", text: $netSales)
                             .keyboardType(.decimalPad)
+                        ScanButton(text: $netSales)
                     }
                     Section(footer: Text("Tips in the form of $XXX.XX")) {
                         TextField("House owes server", text: $houseOwesServer)
                             .keyboardType(.decimalPad)
+                        ScanButton(text: $houseOwesServer)
                     }
                     Section(footer: Text("Tips in the form of $XXX.XX")) {
                         TextField("Server owes house", text: $serverOwesHouse)
                             .keyboardType(.decimalPad)
+                        ScanButton(text: $serverOwesHouse)
                     }
                     Section(footer: Text("Tips in the form of $XXX.XX")) {
-                        TextField("Total cash collected", text: $cashCollected)
+                        TextField("Additional Cash Tips", text: $cashCollected)
                             .keyboardType(.decimalPad)
                     }
                     Button {
@@ -84,6 +86,7 @@ struct ServerInfoView: View {
             DisplayTips(serv: model.servers, numSup: numberOfSupport)
         }
     }
+    
     
     func formCheck() -> Bool {
         // checks if the form is complete

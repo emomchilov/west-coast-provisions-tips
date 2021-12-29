@@ -11,6 +11,7 @@ import SwiftUI
 struct ScanButton: UIViewRepresentable {
     
     @Binding var text: String
+//    var field: String
     
     func makeUIView(context: Context) ->
     UIButton {
@@ -36,10 +37,28 @@ struct ScanButton: UIViewRepresentable {
         
         var hasText = false
         func insertText(_ text: String) {
-            parent.text = text
+            parent.text = textReader(testString: text)
         }
+        
         func deleteBackward() {
             // no function
+        }
+        
+        func textReader(testString: String) -> String {
+            
+            var group1match = ""
+            let stringRange = NSRange(location: 0, length: testString.utf16.count)
+            
+            let regex = try! NSRegularExpression(pattern: #"ary\n(\w* \w*)"#, options: .anchorsMatchLines)
+            
+            if let match = regex.firstMatch(in: testString, options: [], range: stringRange) {
+                if let group1 = Range(match.range(at: 1), in: testString) {
+                    group1match = testString[group1].description
+                    print(group1match)
+            }
+            }
+            
+            return group1match
         }
     }
 }
