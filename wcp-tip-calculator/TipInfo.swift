@@ -10,13 +10,11 @@ import SwiftUI
 @available(iOS 15.0, *)
 struct TipInfoView: View {
     
-    //want to figure out how to take these numbers and pass them into server info
+    // stores the total number of servers & support staff
     @State var numServers: Int = 0
     @State var numSupport: Int = 0
     
     var body: some View {
-
-        
         ZStack {
             // sets the background for the screen
             Color("WCPLightBlue")
