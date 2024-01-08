@@ -8,34 +8,18 @@
 
 import SwiftUI
 
-// Model class to store the server array
-class Model {
-    var servers = [Server]()
-}
-
-// creates a Server object
-struct Server: Hashable {
-    let name: String
-    let netSales: Float
-    let houseOwesServer: Float
-    let serverOwesHouse: Float
-    let cashCollected: Float
-    var serverTotal: Float
-    
-    // for preview purposes
-    static var testServers = [Server(name: "Eden", netSales: 250, houseOwesServer: 3, serverOwesHouse: 4, cashCollected: 5, serverTotal: 5), Server(name: "Weston", netSales: 3, houseOwesServer: 4, serverOwesHouse: 5, cashCollected: 6, serverTotal: 7)]
-}
-
 // creates the ServerInfoView where users can input their end of night results
 @available(iOS 15.0, *)
 struct ServerInfoView: View {
-    
     // number of servers & support staff
     let numberOfServers: Int
     let numberOfSupport: Int
     
     // creates a model object to store the server array
     var model = Model()
+    
+    
+    // MARK: - State
     
     // sets the display tips sheet to false
     @State var showDisplayTips: Bool = false
@@ -46,6 +30,12 @@ struct ServerInfoView: View {
     @State var houseOwesServer = ""
     @State var serverOwesHouse = ""
     @State var cashCollected = ""
+    
+    // MARK: - Computed
+    // checks if the form is complete to enable and disable the save button
+    var formCheck: Bool {
+        name.count < 1 || netSales.count < 1 || houseOwesServer.count < 1 || serverOwesHouse.count < 1 || cashCollected.count < 1
+    }
     
     // creates the form view for user input
     var body: some View {
@@ -70,17 +60,17 @@ struct ServerInfoView: View {
                     Section(footer: Text("Tips in the form of $XXX.XX")) {
                         HStack {
                             TextField("House owes server", text: $houseOwesServer)
-                            .keyboardType(.decimalPad)
-                        ScanButton(text: $houseOwesServer, patternID: "House Owes Server")
-                            .frame(width: 10, height: 10, alignment: .trailing)
+                                .keyboardType(.decimalPad)
+                            ScanButton(text: $houseOwesServer, patternID: "House Owes Server")
+                                .frame(width: 10, height: 10, alignment: .trailing)
                         }
                     }
                     Section(footer: Text("Tips in the form of $XXX.XX")) {
                         HStack {
                             TextField("Server owes house", text: $serverOwesHouse)
-                            .keyboardType(.decimalPad)
-                        ScanButton(text: $serverOwesHouse, patternID: "Server Owes House")
-                            .frame(width: 10, height: 10, alignment: .trailing)
+                                .keyboardType(.decimalPad)
+                            ScanButton(text: $serverOwesHouse, patternID: "Server Owes House")
+                                .frame(width: 10, height: 10, alignment: .trailing)
                         }
                     }
                     Section(footer: Text("Tips in the form of $XXX.XX")) {
@@ -90,27 +80,18 @@ struct ServerInfoView: View {
                     Button {
                         addServerInfo()
                     }
-                label: {
-                    Text("Save")
+                    label: {
+                        Text("Save")
+                    }
+                    .disabled(formCheck)
                 }
-                .disabled(formCheck())
-                }
-                .foregroundColor(Color("WCPBlue"))
+                .foregroundColor(Color.blue)
                 .navigationTitle("Server")
             }
         }
         .sheet(isPresented: $showDisplayTips, onDismiss: nil) {
             DisplayTips(serv: model.servers, numSup: numberOfSupport)
         }
-    }
-    
-    // checks if the form is complete to enable and disable the save button
-    func formCheck() -> Bool {
-        // checks if the form is complete
-        if (name.count < 1 || netSales.count < 1 || houseOwesServer.count < 1 || serverOwesHouse.count < 1 || cashCollected.count < 1) {
-            return true
-        }
-        return false
     }
     
     // function to add server info & clear for the next
@@ -143,12 +124,5 @@ struct ServerInfoView: View {
         static var previews: some View {
             ServerInfoView(numberOfServers: 5, numberOfSupport: 2)
         }
-    }
-}
-
-// formats the currency to $XX.XX
-extension Float {
-    func asCurrency() -> String {
-        return String(format: "$%.02f", self)
     }
 }
