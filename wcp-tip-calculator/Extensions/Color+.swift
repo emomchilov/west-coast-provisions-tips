@@ -6,3 +6,9 @@
 //
 
 import Foundation
+import SwiftUI
+
+extension Color {
+    static let wcpLightBlue = Color("WCPLightBlue")
+    static let wcpBlue = Color("WCPBlue")
+}

@@ -1,7 +1,7 @@
 //
 //  ServerInfo.swift
 //
-//  Allows users to input the end of night values for calculation of tip share
+//  Allows users to input the end of night values for calculation of tip share.
 //
 //  Created by Eden Momchilov on 11/4/21.
 //
@@ -16,8 +16,7 @@ struct ServerInfoView: View {
     let numberOfSupport: Int
     
     // creates a model object to store the server array
-    var model = Model()
-    
+    var tipManager: TipManager
     
     // MARK: - State
     
@@ -32,10 +31,10 @@ struct ServerInfoView: View {
     @State var cashCollected = ""
     
     // MARK: - Computed
-    // checks if the form is complete to enable and disable the save button
-    var formCheck: Bool {
-        name.count < 1 || netSales.count < 1 || houseOwesServer.count < 1 || serverOwesHouse.count < 1 || cashCollected.count < 1
-    }
+    // checks if the form is complete
+    //    var formCompleted: Bool {
+    //        name.count < 1 || $netSales.count < 1 || houseOwesServer.count < 1 || serverOwesHouse.count < 1 || cashCollected.count < 1
+    //    }
     
     // creates the form view for user input
     var body: some View {
@@ -80,33 +79,33 @@ struct ServerInfoView: View {
                     Button {
                         addServerInfo()
                     }
-                    label: {
-                        Text("Save")
-                    }
-                    .disabled(formCheck)
+                label: {
+                    Text("Save")
+                }
+                    //                    .disabled(formCompleted)
                 }
                 .foregroundColor(Color.blue)
                 .navigationTitle("Server")
             }
         }
         .sheet(isPresented: $showDisplayTips, onDismiss: nil) {
-            DisplayTips(serv: model.servers, numSup: numberOfSupport)
+            DisplayTips(serv: tipManager.servers, numSup: numberOfSupport)
         }
     }
     
     // function to add server info & clear for the next
     func addServerInfo() {
         // creates a new server object with user inputs
-        var server = Server(name: name, netSales: Float(netSales)!, houseOwesServer: Float(houseOwesServer)!, serverOwesHouse: Float(serverOwesHouse)!, cashCollected: Float(cashCollected)!, serverTotal: 0)
+        var server = Server(name: name, netSales: netSales.description.floatValue, houseOwesServer: houseOwesServer.description.floatValue, serverOwesHouse: serverOwesHouse.description.floatValue, cashCollected: cashCollected.description.floatValue, serverTotal: 0)
         
         // calculates the total amount of $$ the server brought in
         server.serverTotal = (server.houseOwesServer - server.serverOwesHouse) + server.cashCollected
         
         // adds the server object to the server array
-        model.servers.append(server)
+        tipManager.servers.append(server)
         
         // checks to see if this is the last server in the list.. if not, clears out input fields
-        if (model.servers.count == numberOfServers) {
+        if (tipManager.servers.count == numberOfServers) {
             showDisplayTips = true
         }
         else {
@@ -118,11 +117,12 @@ struct ServerInfoView: View {
             
         }
     }
-    
-    // creates the preview provider
-    struct ServerInfoView_Previews: PreviewProvider {
-        static var previews: some View {
-            ServerInfoView(numberOfServers: 5, numberOfSupport: 2)
-        }
+}
+
+// creates the preview provider
+@available(iOS 15.0, *)
+struct ServerInfoView_Previews: PreviewProvider {
+    static var previews: some View {
+        ServerInfoView(numberOfServers: 5, numberOfSupport: 2, tipManager: TipManager(servers: [], numSupport: 2))
     }
 }

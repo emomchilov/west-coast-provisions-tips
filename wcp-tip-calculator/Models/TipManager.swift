@@ -6,14 +6,20 @@
 //
 
 import Foundation
+import SwiftUI
 
 // Model class to store the server array
 class TipManager {
-    var serverArray: [Server]?
-    var numSupport: Int?
+    @Published var servers: [Server]
+    @Published var numSupport: Int
+    
+    init(servers: [Server], numSupport: Int) {
+        self.servers = []
+        self.numSupport = 0
+    }
     
     // function to calculate total tips
-    func totalTips(serverArray: [Server], numSupport: Int) -> (netSales: Float, tips: Float, supportTips: Float) {
+    static func totalTips(serverArray: [Server], numSupport: Int) -> (netSales: Float, tips: Float, supportTips: Float) {
         // stores the value for total net sales
         var totalNetSales: Float = 0
         // stores the value for overall tips - used for calculation
@@ -33,5 +39,9 @@ class TipManager {
         // calculates the tips per server
         perServer = (totalTips - (sTips * Float(numSupport))) / Float(serverArray.count)
         return (totalNetSales, perServer, sTips)
+    }
+    
+    func addServer(server: Server) {
+        servers.append(server)
     }
 }
