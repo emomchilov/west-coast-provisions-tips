@@ -10,7 +10,6 @@ import SwiftUI
 // checks if the device has iOS 15
 @available(iOS 15.0, *)
 @main
-
 // launches to the home screen
 struct wcp_tip_calculatorApp: App {
     var body: some Scene {

@@ -1,5 +1,5 @@
 //
-//  Test.swift
+//  ScanButton.swift
 //  wcp-tip-calculator
 //
 //  Created by Eden  Momchilov on 12/10/21.
